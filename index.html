@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GutDiary is a food diary for iPhone that works out which foods, and which ingredients, are upsetting your gut. Free to log, £4.99 per analysis.">
+<meta property="og:title" content="GutDiary">
+<meta property="og:description" content="It's time to listen to your gut. Free to log, £4.99 per analysis, no subscription.">
+<title>GutDiary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F3F5EF;
+    --sheet:#FBFCF8;
+    --rule:#DCE4D7;
+    --ink:#1D3024;
+    --ink-soft:#46594B;
+    --ink-faint:#7B8C7F;
+    --green:#2E5A3E;
+    --green-deep:#1F3F2B;
+    --leaf:#E2EBDD;
+    --pencil:#B8412B;
+    --ok:#4F7F5C;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --paper:#101812;
+      --sheet:#172119;
+      --rule:#2A382D;
+      --ink:#E1EBE2;
+      --ink-soft:#AFC1B2;
+      --ink-faint:#7E9282;
+      --green:#9CC7A6;
+      --green-deep:#BFE0C6;
+      --leaf:#1C2A1F;
+      --pencil:#E6826B;
+      --ok:#8FC09B;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --paper:#101812;
+    --sheet:#172119;
+    --rule:#2A382D;
+    --ink:#E1EBE2;
+    --ink-soft:#AFC1B2;
+    --ink-faint:#7E9282;
+    --green:#9CC7A6;
+    --green-deep:#BFE0C6;
+    --leaf:#1C2A1F;
+    --pencil:#E6826B;
+    --ok:#8FC09B;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding-inline:20px}
+  .narrow{max-width:640px}
+  h1,h2{font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;color:var(--green-deep);text-wrap:balance}
+  a{color:var(--green)}
+  a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  nav{padding-block:22px}
+  nav .wrap{display:flex;justify-content:space-between;align-items:baseline}
+  .mark{font-family:'Libre Caslon Text',Georgia,serif;font-size:1.3rem;color:var(--green-deep);text-decoration:none}
+  .mark i{font-style:italic}
+  nav a.dl{font-size:.92rem;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+
+  /* Hero */
+  .hero{padding-block:40px 30px}
+  .hero h1{font-size:clamp(2.5rem,6.4vw,4.4rem);line-height:1.04;letter-spacing:-.02em;max-width:12em}
+  .hero h1 i{color:var(--green)}
+  .hero .intro{margin-top:22px;max-width:34em;font-size:1.08rem;color:var(--ink-soft)}
+  .actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+  .button{
+    display:inline-block;background:var(--green-deep);color:var(--paper);
+    text-decoration:none;font-weight:600;font-size:.98rem;
+    padding:14px 24px;border-radius:6px;
+  }
+  .button:hover{background:var(--green)}
+  .aside{font-size:.9rem;color:var(--ink-faint)}
+
+  /* The diary page */
+  .page-wrap{padding-block:34px 70px}
+  .diary{
+    position:relative;background:var(--sheet);
+    border:1px solid var(--rule);border-radius:3px;
+    box-shadow:0 1px 0 var(--rule), 0 18px 40px -24px rgba(20,40,26,.35);
+    padding:26px 26px 30px 76px;
+    background-image:
+      linear-gradient(90deg, transparent 58px, color-mix(in srgb, var(--pencil) 45%, transparent) 58px, color-mix(in srgb, var(--pencil) 45%, transparent) 59px, transparent 59px),
+      repeating-linear-gradient(to bottom, transparent 0 39px, var(--rule) 39px 40px);
+    background-position:0 0, 0 58px;
+    transform:rotate(-.4deg);
+  }
+  .diary .hand{font-family:'Nanum Pen Script','Comic Sans MS',cursive;color:var(--ink-soft);font-size:1.7rem;line-height:1}
+  .diary .date{display:block;height:40px;padding-top:4px}
+  .entries{list-style:none}
+  .entries li{
+    display:grid;grid-template-columns:62px 1fr auto;gap:14px;align-items:baseline;
+    height:40px;line-height:40px;font-size:.96rem;
+  }
+  .entries .t{font-variant-numeric:tabular-nums;color:var(--ink-faint);font-size:.88rem}
+  .entries .food{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .entries .s{font-variant-numeric:tabular-nums;font-size:.86rem;font-weight:600;white-space:nowrap}
+  .s.bad{color:var(--pencil)}
+  .s.fine{color:var(--ok)}
+  .day{display:block;height:40px;line-height:48px}
+  .circled{position:relative;display:inline-block}
+  .circled::after{
+    content:"";position:absolute;inset:4px -9px 2px -9px;
+    border:2px solid var(--pencil);border-radius:48% 52% 45% 55% / 55% 45% 55% 45%;
+    transform:rotate(-2deg);pointer-events:none;
+  }
+  .note{
+    display:block;margin-top:12px;
+    transform:rotate(-2deg);transform-origin:left center;
+    color:var(--pencil)!important;font-size:1.75rem!important;line-height:1.05!important;
+  }
+  .caption{margin-top:18px;font-size:.84rem;color:var(--ink-faint)}
+
+  /* Letter */
+  .letter{padding-block:30px 60px}
+  .letter h2{font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.15}
+  .letter p{margin-top:18px;color:var(--ink-soft)}
+  .sig{font-family:'Nanum Pen Script',cursive;font-size:2rem;color:var(--green);margin-top:14px;line-height:1}
+
+  /* What it looks for */
+  .looks{padding-block:66px}
+  .looks h2{font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.15}
+  .looks h3{font-size:1.02rem;font-weight:600;color:var(--ink);margin-top:30px}
+  .looks p{margin-top:6px;color:var(--ink-soft)}
+
+  /* Price */
+  .price{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:62px}
+  .price h2{font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.15}
+  .price > .wrap > p{margin-top:14px;color:var(--ink-soft);max-width:36em}
+  .price-table{margin-top:30px;width:100%;border-collapse:collapse;font-size:.97rem}
+  .price-table th{text-align:left;font-weight:600;padding:12px 16px 12px 0;border-bottom:2px solid var(--green-deep);color:var(--green-deep);vertical-align:bottom}
+  .price-table th small{display:block;font-weight:400;font-size:.85rem;color:var(--ink-faint)}
+  .price-table td{padding:11px 16px 11px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft);vertical-align:top}
+  .price-table td.y{color:var(--green);font-weight:600;white-space:nowrap}
+  .price-table td.n{color:var(--ink-faint);white-space:nowrap}
+  .table-scroll{overflow-x:auto}
+
+  /* End */
+  .end{padding-block:70px;text-align:left}
+  .end h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.08;letter-spacing:-.015em;max-width:14em}
+  .end h2 i{color:var(--green)}
+  .end-row{display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap}
+  .end-row .button{flex:none}
+  .end p{margin-top:14px;color:var(--ink-soft);max-width:32em}
+
+  footer{padding-block:30px 44px;border-top:1px solid var(--rule)}
+  footer p{font-size:.8rem;color:var(--ink-faint);max-width:52em;line-height:1.55}
+  .foot{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.84rem}
+  .foot a{color:var(--ink-soft)}
+
+  @media (max-width:760px){
+    body{font-size:16px}
+    .diary{padding:22px 16px 26px 54px;transform:none;
+      background-image:
+        linear-gradient(90deg, transparent 40px, color-mix(in srgb, var(--pencil) 45%, transparent) 40px, color-mix(in srgb, var(--pencil) 45%, transparent) 41px, transparent 41px),
+        repeating-linear-gradient(to bottom, transparent 0 39px, var(--rule) 39px 40px);}
+    .entries li{grid-template-columns:48px 1fr auto;gap:10px;font-size:.88rem}
+  }
+  @media (prefers-reduced-motion: reduce){ .diary{transform:none} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">Gut <i>Diary</i></a>
+    <a class="dl" href="#download">Download</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>It's time to listen to your <i>gut.</i></h1>
+    <p class="intro">Bloated after lunch, heartburn after dinner, flat all afternoon, and no idea which food is doing it. GutDiary is a food diary that works it out, down to the ingredient.</p>
+    <div class="actions">
+      <a class="button" href="#download">Download on the App Store</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="wrap">
+    <div class="diary" role="img" aria-label="An example diary page: granola and a seeded sandwich were both followed by bloating, and both contain linseed.">
+      <span class="date hand">Mon 14th</span>
+      <ul class="entries">
+        <li><span class="t">08:10</span><span class="food"><span class="circled">Granola</span> with yoghurt</span><span class="s bad">bloated 60</span></li>
+        <li><span class="t">13:00</span><span class="food">Chicken salad</span><span class="s fine">fine</span></li>
+        <li><span class="t">19:30</span><span class="food">Pasta, tomato sauce</span><span class="s fine">fine</span></li>
+      </ul>
+      <span class="day hand">Tue 15th</span>
+      <ul class="entries">
+        <li><span class="t">08:00</span><span class="food">White toast, butter</span><span class="s fine">fine</span></li>
+        <li><span class="t">12:40</span><span class="food"><span class="circled">Seeded sandwich</span>, ham</span><span class="s bad">bloated 55</span></li>
+        <li><span class="t">18:45</span><span class="food">Rice, curry, yoghurt</span><span class="s fine">fine</span></li>
+      </ul>
+      <span class="hand note">both have linseed in them!</span>
+    </div>
+  </div>
+</div>
+
+<section class="letter">
+  <div class="wrap narrow">
+    <h2>I made it for myself</h2>
+    <p>I was tested for multiple things through the NHS, and everything came back clear. But I still felt rough, and I kept being told the same thing: you need to monitor what you're eating.</p>
+    <p>So I built an app to do it properly. It gave me, and the friends who tried it, so much relief that I'm now offering it to everyone.</p>
+    <p class="sig">Mo</p>
+  </div>
+</section>
+<section class="looks">
+  <div class="wrap narrow">
+    <h2>What the analysis looks for</h2>
+    <h3>The ingredient behind the meal</h3>
+    <p>It looks up what's actually in the products you eat, so if two different foods upset you and they share one ingredient, it finds that ingredient.</p>
+    <h3>The times you felt fine</h3>
+    <p>If you ate something five times and only felt bad twice, it tries to work out why. A bigger portion, a bad night's sleep, something else on the plate. If it can't explain it, it tells you it isn't sure.</p>
+    <h3>Your drinks and cigarettes</h3>
+    <p>Coffee, alcohol and smoking all change how your gut behaves. Log them with one tap and they stop getting blamed on whatever you had for dinner.</p>
+    <h3>What to cut next</h3>
+    <p>You get a list of foods that are fine, foods that look like a problem, and what to leave out for a week to be sure. It will never tell you to eat something to test it.</p>
+  </div>
+</section>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <h2>The diary is free. The analysis is £4.99.</h2>
+    <p>No subscription and nothing to cancel. Log for as long as you like, and pay each time you want an answer.</p>
+    <div class="table-scroll">
+      <table class="price-table">
+        <thead>
+          <tr><th scope="col"></th><th scope="col">Free<small>always</small></th><th scope="col">Analysis<small>£4.99 each</small></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Log meals by voice or text</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Check-in reminders and morning logs</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Drinks, cigarettes and stool tracking</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Every meal scored, best to worst</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>Photo logging</td><td class="y">First 30 days</td><td class="y">90 more days</td></tr>
+          <tr><td>Which ingredients are causing problems</td><td class="n">No</td><td class="y">Yes</td></tr>
+          <tr><td>What to cut next, saved as a PDF</td><td class="n">No</td><td class="y">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="end" id="download">
+  <div class="wrap end-row">
+    <h2>Download it now. Log for a month. <i>Find your triggers.</i></h2>
+    <!-- TO DEPLOY: replace # with your App Store link -->
+    <a class="button" href="#">Download on the App Store</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>GutDiary helps you spot patterns between what you eat and how you feel. It isn't a medical device and doesn't diagnose anything. It's for suspected food intolerances, not allergies. If you have or suspect a food allergy, or before making big changes to your diet, speak to a doctor or registered dietitian.</p>
+    <div class="foot">
+      <span>© 2026 GutDiary</span>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:hello@gutdiary.app">hello@gutdiary.app</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
