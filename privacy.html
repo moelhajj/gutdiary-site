@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How GutDiary handles your data.">
+<title>Privacy Policy · GutDiary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#F3F5EF; --sheet:#FBFCF8; --rule:#DCE4D7; --ink:#1D3024; --ink-soft:#46594B;
+    --ink-faint:#7B8C7F; --green:#2E5A3E; --green-deep:#1F3F2B; --leaf:#E2EBDD;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --paper:#101812; --sheet:#172119; --rule:#2A382D; --ink:#E1EBE2; --ink-soft:#AFC1B2;
+      --ink-faint:#7E9282; --green:#9CC7A6; --green-deep:#BFE0C6; --leaf:#1C2A1F;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --paper:#101812; --sheet:#172119; --rule:#2A382D; --ink:#E1EBE2; --ink-soft:#AFC1B2;
+    --ink-faint:#7E9282; --green:#9CC7A6; --green-deep:#BFE0C6; --leaf:#1C2A1F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding-inline:20px}
+  .narrow{max-width:700px}
+  a{color:var(--green)}
+  a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  nav{padding-block:22px}
+  nav .wrap{display:flex;justify-content:space-between;align-items:baseline}
+  .mark{font-family:'Libre Caslon Text',Georgia,serif;font-size:1.3rem;color:var(--green-deep);text-decoration:none}
+  .mark i{font-style:italic}
+  nav a.dl{font-size:.92rem;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+  main{padding-block:30px 70px}
+  h1,h2{font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;color:var(--green-deep);text-wrap:balance}
+  h1{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.08;letter-spacing:-.015em}
+  .updated{margin-top:10px;font-size:.9rem;color:var(--ink-faint)}
+  h2{font-size:clamp(1.4rem,2.8vw,1.8rem);line-height:1.2;margin-top:48px}
+  h3{font-size:1.02rem;font-weight:600;color:var(--ink);margin-top:26px}
+  p,li{color:var(--ink-soft)}
+  p{margin-top:12px}
+  ul{margin-top:10px;padding-left:1.2em}
+  li{margin-top:6px}
+  strong{color:var(--ink);font-weight:600}
+  .summary{margin-top:28px;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:20px 22px}
+  .summary p:first-child{margin-top:0}
+  .summary ul{margin-top:8px}
+  .table-scroll{overflow-x:auto;margin-top:16px}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th{text-align:left;font-weight:600;padding:10px 14px 10px 0;border-bottom:2px solid var(--green-deep);color:var(--green-deep);vertical-align:bottom}
+  td{padding:10px 14px 10px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft);vertical-align:top}
+  footer{padding-block:30px 44px;border-top:1px solid var(--rule)}
+  .foot{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.84rem;color:var(--ink-faint)}
+  .foot a{color:var(--ink-soft)}
+  @media (max-width:760px){ body{font-size:16px} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="mark" href="/">Gut <i>Diary</i></a>
+    <a class="dl" href="/#download">Download</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap narrow">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated 28 September 2026</p>
+
+    <div class="summary">
+      <p><strong>The short version</strong></p>
+      <ul>
+        <li>Your diary is stored on your iPhone. There's no account and no login.</li>
+        <li>Your data only leaves your phone when you describe a meal photo, buy an analysis or run one. Photos and diary text go to our server and on to Anthropic, the company whose AI does the work.</li>
+        <li>Photos and diary text are not saved on our server. An analysis result is kept for up to 7 days so you can still collect it if you close the app, then it's deleted.</li>
+        <li>We don't use advertising, analytics or tracking, we don't sell your data, and it isn't used to train AI.</li>
+      </ul>
+    </div>
+
+    <h2>Who we are</h2>
+    <p>GutDiary is run by Mohamed Elhaj, a sole trader based in London, United Kingdom, trading as GutDiary. For this policy, "we" means GutDiary. We're the data controller for the personal data described here.</p>
+    <p>Contact us about anything in this policy at <a href="mailto:support@gutdiary.app">support@gutdiary.app</a>.</p>
+
+    <h2>What stays on your phone</h2>
+    <p>Everything you log is stored on your iPhone and nowhere else. That covers:</p>
+    <ul>
+      <li>your name and the answers you give when you set up the app</li>
+      <li>meals, portions and meal photos</li>
+      <li>check-ins, symptoms, notes, sleep and stool logs</li>
+      <li>drinks, nicotine and period logs</li>
+      <li>your analysis results and any PDFs you create</li>
+    </ul>
+    <p>If you use iCloud Backup, Apple includes this data in your iPhone backup under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. We can't see it.</p>
+    <p><strong>Voice logging</strong> uses Apple's speech recognition to turn what you say into text. Depending on your iPhone, Apple may process the audio on the device or on its own servers. We never receive your audio. Only the resulting text goes into your diary.</p>
+    <p><strong>Reminders</strong> for check-ins are scheduled on your phone. We don't send them from a server.</p>
+
+    <h2>What leaves your phone, and when</h2>
+
+    <h3>1. When you describe a meal photo</h3>
+    <p>The photo is sent to our server, which passes it to Anthropic to write a description for you to check. The photo isn't saved on our server. The photo stays in your diary on your phone.</p>
+
+    <h3>2. When you run an analysis</h3>
+    <p>Your diary for the most recent 90 days you logged is sent to our server as text and passed to Anthropic. This includes your meals, check-ins, symptoms, notes, sleep, stool, drinks, nicotine and period logs, and your answers to the analysis's follow-up questions. It also includes your setup answers: age range, whether you track a cycle, suspected foods, diagnoses, medications, nicotine and alcohol use. <strong>Your name is not sent.</strong></p>
+    <p>While the analysis runs, your diary is held in our server's memory only and isn't saved. The finished result is saved on our server for up to 7 days so the app can collect it if you closed it in the meantime. After that it's deleted automatically.</p>
+    <p>To check ingredients, the analysis can look up food products and brands on the web through Anthropic's search tool. Those searches are about products, not about you.</p>
+
+    <h3>3. To keep the service secure and track your allowance</h3>
+    <p>When you first use a feature that needs our server, the app creates a random ID for your phone. The ID isn't linked to your name, email or Apple ID. It's stored in your iCloud Keychain, so your allowance survives reinstalling the app. Against that ID our server stores:</p>
+    <ul>
+      <li>when you described your first photo, how many photos you've described today, and when your paid photo days end</li>
+      <li>how many analyses you have available and how many you've bought</li>
+      <li>a security key from Apple's App Attest, which confirms requests come from a genuine copy of the app</li>
+    </ul>
+
+    <h3>4. When you buy an analysis</h3>
+    <p>Payment is handled entirely by Apple. We never see your card details, name or Apple ID. Apple sends us the transaction ID, product, date and whether it was later refunded, and we store these against your random ID. The app also gives Apple that random ID with the purchase, so refunds can be matched to the right allowance.</p>
+
+    <h3>5. Technical logs</h3>
+    <p>Our server keeps short-lived technical logs to spot problems, for example how long an analysis took and what it cost to run. If an analysis fails, the log may include a short extract of the AI's output so we can fix the problem. That extract can contain details from your diary. Our hosting provider keeps these logs for up to 30 days and then deletes them. If something fails, we get an alert email that includes the error and your random ID, but never your diary.</p>
+    <p>Our server sees your IP address when your phone connects. We use it only to limit the number of requests, which protects against abuse. The count is held in memory and isn't saved to our database. Our hosting provider may also record IP addresses as part of running its network.</p>
+
+    <h2>Who processes your data</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">Company</th><th scope="col">What they do</th><th scope="col">Where</th></tr></thead>
+        <tbody>
+          <tr><td>Anthropic PBC</td><td>Runs the AI that describes photos and analyses your diary. Anthropic deletes the data it receives from us within 30 days, unless it's needed longer to investigate misuse or by law. Under its commercial terms it doesn't use this data to train its models. <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a></td><td>USA</td></tr>
+          <tr><td>Railway Corp.</td><td>Hosts our server, database and logs</td><td>USA</td></tr>
+          <tr><td>Apple</td><td>App Store payments, refunds, App Attest, iCloud Keychain and speech recognition</td><td>Worldwide</td></tr>
+          <tr><td>Resend</td><td>Delivers our error alert emails, which contain your random ID but no diary data</td><td>USA</td></tr>
+          <tr><td>Zoho</td><td>Hosts our support email, if you contact us</td><td>EU</td></tr>
+          <tr><td>GitHub and Google Fonts</td><td>Host this website and its fonts. They can see your IP address when you visit. The website sets no cookies.</td><td>USA</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Where data goes outside the UK, we rely on the safeguards UK law requires. These include the UK International Data Transfer Addendum to the EU Standard Contractual Clauses, or the UK-US Data Bridge where the provider is certified.</p>
+
+    <h2>Our legal basis</h2>
+    <ul>
+      <li><strong>Your explicit consent</strong> for your diary and photos. Diary details about symptoms, diagnoses, medications and periods are health data, which UK law treats as a special category. You give consent when you choose to describe a photo or run an analysis. You can withdraw it at any time by not using those features and asking us to delete your server records.</li>
+      <li><strong>Performing our contract with you</strong> for your purchases and photo allowance.</li>
+      <li><strong>Our legitimate interests</strong> for security, preventing abuse and fixing faults.</li>
+      <li><strong>Legal obligations</strong> for keeping records of sales.</li>
+    </ul>
+
+    <h2>How long we keep things</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">Data</th><th scope="col">Kept for</th></tr></thead>
+        <tbody>
+          <tr><td>Meal photos sent for description</td><td>Not stored on our server</td></tr>
+          <tr><td>Diary text sent for analysis</td><td>Not stored. Held in memory only while the analysis runs.</td></tr>
+          <tr><td>Analysis results on our server</td><td>Up to 7 days, then deleted automatically</td></tr>
+          <tr><td>Technical logs</td><td>Up to 30 days</td></tr>
+          <tr><td>Random ID, photo allowance and security key</td><td>While you use GutDiary, or until you ask us to delete them</td></tr>
+          <tr><td>Purchase records</td><td>Up to 6 years, for our accounts and to handle refunds</td></tr>
+          <tr><td>Data held by Anthropic</td><td>Up to 30 days, as above</td></tr>
+          <tr><td>Everything on your phone</td><td>Until you delete it or delete the app</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Your rights</h2>
+    <p>Under UK data protection law you can ask to see the personal data we hold about you. You can also ask us to correct it, delete it, restrict or object to how we use it, or give you a copy to take elsewhere. Email <a href="mailto:support@gutdiary.app">support@gutdiary.app</a>. We'll reply within one month.</p>
+    <p>We don't know who you are, because your server records are tied only to a random ID. To help us find your records, email from your phone and tell us roughly when you started using the app and when you made any purchases.</p>
+    <p>To delete everything on your phone, delete the GutDiary app. If you use iCloud Backup, older backups may still contain it until Apple replaces them.</p>
+    <p>If you're unhappy with how we've handled your data, please tell us first. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.</p>
+
+    <h2>Children</h2>
+    <p>GutDiary is for adults aged 18 and over. We don't knowingly process data about anyone younger. If you think a child has used the app, contact us and we'll delete their server records.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we change how we handle your data, we'll update this page and the date at the top. If a change is significant, we'll also tell you in the app before it takes effect.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span>© 2026 GutDiary</span>
+      <a href="/">Home</a>
+      <a href="/terms.html">Terms</a>
+      <a href="mailto:support@gutdiary.app">support@gutdiary.app</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
